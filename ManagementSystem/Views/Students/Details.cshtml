@@ -1,0 +1,52 @@
+﻿@model Student
+@using System.Globalization
+
+<div class="container my-5">
+    <div class="alert alert-info text-center">
+        <h1 style="color:maroon;">Welcome to Student Index</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">@Html.DisplayNameFor(emp => emp.Id)</dt>
+                <dd class="col-sm-8">@Model.Id</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(emp => emp.FullName)</dt>
+                <dd class="col-sm-8">@Model.FullName </dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(emp => emp.Course)</dt>
+                <dd class="col-sm-8">@Model.Course.CourseName</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(emp => emp.NationalId)</dt>
+                <dd class="col-sm-8">@Model.NationalId </dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(emp => emp.Grade)</dt>
+                <dd class="col-sm-8">@Model.Grade</dd>
+
+                <dt class="col-sm-4">GPA</dt>
+                <dd class="col-sm-8">@Model.GPA</dd>
+
+                <dt class="col-sm-4">Enroll Date</dt>
+                <dd class="col-sm-8">@Model.EnrollDate.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture)</dd>
+
+                <dt class="col-sm-4">Graduation Date</dt>
+                <dd class="col-sm-8">@Model.GraduationDate.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture)</dd>
+
+                <dt class="col-sm-4">Phone Number</dt>
+                <dd class="col-sm-8">@Model.PhoneNumber</dd>
+
+                <dt class="col-sm-4">Email Address</dt>
+                <dd class="col-sm-8">@Model.EmailAddress</dd>
+            </dl>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <img src="@Model.ImagePath" alt="Student Image" class="img-thumbnail w-100" style="max-width: 300px;">
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-controller="Students" asp-action="GetIndexView" class="btn btn-primary">Back</a>
+    </div>
+</div>

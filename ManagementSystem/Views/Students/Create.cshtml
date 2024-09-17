@@ -1,0 +1,106 @@
+﻿@model Student
+
+<h1 class="alert alert-success text-center">Create Student</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <button onclick="greetVisitor()" class="btn btn-info mb-3">Greet User</button>
+            <form method="post" asp-controller="Students" asp-action="AddNew" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="FullName" class="form-label">Full Name</label>
+                    <input type="text" asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="CourseId" class="form-label">Courses</label>
+                    <select class="form-control" asp-for="CourseId" asp-items="@(new SelectList(ViewBag.AllCourses, "Id", "CourseName"))">
+                        <option selected disabled>Select a course...</option>
+                    </select>
+                    <span asp-validation-for="CourseId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="NationalId" class="form-label">National ID</label>
+                    <input type="text" asp-for="NationalId" class="form-control" />
+                    <span asp-validation-for="NationalId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Grade" class="form-label">Grade</label>
+                    <input type="text" asp-for="Grade" class="form-control" />
+                    <span asp-validation-for="Grade" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="GPA" class="form-label">GPA</label>
+                    <input type="number" asp-for="GPA" class="form-control" />
+                    <span asp-validation-for="GPA" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="BirthDate" class="form-label">Birth Date</label>
+                    <input asp-for="BirthDate" class="form-control" />
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="EnrollDate" class="form-label">Enroll Date</label>
+                    <input asp-for="EnrollDate" class="form-control" />
+                    <span asp-validation-for="EnrollDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="GraduationDate" class="form-label">Graduation Date</label>
+                    <input asp-for="GraduationDate" class="form-control" />
+                    <span asp-validation-for="GraduationDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="EmailAddress" class="form-label">Email Address</label>
+                    <input asp-for="EmailAddress" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="ConfirmEmailAddress" class="form-label">Confirm Email Address</label>
+                    <input asp-for="ConfirmEmailAddress" class="form-control" />
+                    <span asp-validation-for="ConfirmEmailAddress" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="ImageFile" class="form-label">Upload Image</label>
+                    <input type="file" name="imageFile" id="imageFile" accept=".png,.jpg" class="form-control" onchange="AddImage()" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <button type="submit" class="btn btn-success me-2">Add</button>
+                    <a asp-controller="Students" asp-action="GetIndexView" class="btn btn-danger">Back</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-4">
+            <div class="d-flex justify-content-end">
+                <img src="" id="empImage" style="width: 100%; aspect-ratio: 1/1" class="img-thumbnail" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function AddImage() {
+            document.getElementById("empImage").src = window.URL.createObjectURL(document.getElementById("imageFile").files[0]);
+        }
+    </script>
+}

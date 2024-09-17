@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ManagementSystem.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<h1 style="background-color: #4a90e2; color: #ffffff; text-align: center; padding: 20px 40px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); font-size: 2em;">
+    Welcome to Courses Index
+</h1>
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherName)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" style="text-decoration:none" class="btn btn-primary" title="Edit"><i class="bi bi-pencil-square"></i> </a>
+                    <a asp-action="Details" asp-route-id="@item.Id" style="text-decoration:none" class="btn btn-success" title="Details"> <i class="bi bi-list-ul"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" style="text-decoration:none" class="btn btn-danger" title="Delete"><i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
